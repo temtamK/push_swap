@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   list_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/10 14:34:16 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/22 02:48:03 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/05/31 17:47:25 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:02:59 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*put_in_list(t_all *all, char **split, t_stack *new)
+t_stack	*put_in_list(t_data *data, char **split, t_stack *new)
 {
 	int	i;
 
@@ -30,19 +30,19 @@ t_stack	*put_in_list(t_all *all, char **split, t_stack *new)
 		}
 		new->next = NULL;
 		new->previous = NULL;
-		add_back(&all->a, new);
+		add_back(&data->a, new);
 		new = NULL;
 		i++;
 	}
-	return (all->a);
+	return (data->a);
 }
 
-int	get_pivot(t_stack *c)
+int		get_pivot(t_stack *c)
 {
 	t_stack	*result;
-	    int	len;
-	    int	m;
-	    int	k;
+	int		len;
+	int		m;
+	int		k;
 
 	m = 0;
 	k = 0;
@@ -60,7 +60,7 @@ int	get_pivot(t_stack *c)
 	return (k);
 }
 
-int	get_index(t_stack *a, int pivot)
+int		get_index(t_stack *a, int pivot)
 {
 	int	i;
 
@@ -75,7 +75,7 @@ int	get_index(t_stack *a, int pivot)
 	return (-1);
 }
 
-int	get_index_max(t_stack *a, int pivot)
+int		get_index_max(t_stack *a, int pivot)
 {
 	int	i;
 
@@ -90,9 +90,9 @@ int	get_index_max(t_stack *a, int pivot)
 	return (-1);
 }
 
-int	get_max(t_stack *b)
+int		get_max(t_stack *b)
 {
-	    int	max;
+	int		max;
 	t_stack	*tmp;
 
 	max = 0;

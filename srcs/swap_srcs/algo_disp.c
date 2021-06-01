@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_disp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 22:01:00 by zainabdnaya       #+#    #+#             */
-/*   Updated: 2021/04/20 15:25:07 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/05/31 23:54:52 by taemkim           #+#    #+#             */
+/*   Updated: 2021/05/31 23:55:02 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	part1_1_d(t_stack **a, t_stack **b, int len)
 {
-	    int	size;
-	    int	m;
+	int		size;
+	int		m;
 	t_stack	*tmp;
 	t_stack	*tmps;
 
@@ -42,7 +42,7 @@ void	part1_1_d(t_stack **a, t_stack **b, int len)
 
 void	part1_2_d(t_stack **a, t_stack **b, int size)
 {
-	    int	min;
+	int		min;
 	t_stack	*tmp;
 
 	tmp = NULL;

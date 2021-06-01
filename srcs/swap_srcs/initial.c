@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 10:46:37 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/21 15:35:42 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/06/01 00:02:39 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:14:00 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_all	*initial(t_all *all)
+t_data	*initial(t_data *data)
 {
-	all = (t_all *)malloc(sizeof(t_all));
-	if (all == NULL)
+	data = (t_data *)malloc(sizeof(t_data));
+	if (data == NULL)
 		exit(1);
-	all->a = NULL;
-	all->b = NULL;
-	all->len = 0;
-	all->line = NULL;
-	all->split = NULL;
-	all->print = 0;
-	all->color = 0;
-	return (all);
+	data->a = NULL;
+	data->b = NULL;
+	data->len = 0;
+	data->line = NULL;
+	data->split = NULL;
+	data->print = 0;
+	data->color = 0;
+	return (data);
 }
 
 void	ft_bzero(void *s, size_t n)
 {
 	unsigned int	i;
-	        char	*str;
+	char			*str;
 
 	i = 0;
 	str = s;
@@ -41,7 +41,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-int	condition(char *line)
+int		condition(char *line)
 {
 	if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "ra"))
 		return (1);

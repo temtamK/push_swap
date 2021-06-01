@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 17:06:51 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/21 04:41:32 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/06/01 00:04:32 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:04:33 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	print_list(t_stack *ptr)
 	return ;
 }
 
-void	print_all(t_stack *a, t_stack *b)
+void	print_data(t_stack *a, t_stack *b)
 {
 	if (a)
 	{

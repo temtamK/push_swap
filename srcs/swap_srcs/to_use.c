@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   to_use.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 15:33:49 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/10 14:46:56 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/05/31 18:10:44 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:06:28 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	val_aprox(float m)
+int					val_aprox(float m)
 {
 	int	k;
 
-	k = (int) m;
+	k = (int)m;
 	if ((m - k) >= 0.5)
-		return ((int) m + 1);
+		return ((int)m + 1);
 	else
-		return ((int) m);
+		return ((int)m);
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+int					ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
@@ -41,7 +41,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int	size_list(t_stack *a)
+int					size_list(t_stack *a)
 {
 	int	len;
 
@@ -67,10 +67,10 @@ static long long	operation(const char *str, long lenght, int sign)
 	return (sign * r);
 }
 
-long long	my_atoi(const char *str)
+long long			my_atoi(const char *str)
 {
 	long	lenght;
-	 int	sign;
+	int		sign;
 
 	lenght = 0;
 	sign = 1;

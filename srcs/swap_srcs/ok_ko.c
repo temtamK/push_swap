@@ -3,46 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ok_ko.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 18:45:25 by zainabdnaya       #+#    #+#             */
-/*   Updated: 2021/04/22 00:11:43 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/05/31 17:48:08 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:15:12 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_all	*fill_in(t_all *all)
+t_data	*fill_in(t_data *data)
 {
 	t_stack	*new;
 
 	new = NULL;
-	check_replicat(all->split);
-	check_ascii(all->split);
-	all->a = put_in_list(all, all->split, new);
-	all->len = size_list(all->a);
-	return (all);
+	check_replicat(data->split);
+	check_ascii(data->split);
+	data->a = put_in_list(data, data->split, new);
+	data->len = size_list(data->a);
+	return (data);
 }
 
-void	checker_sort(t_all *all)
+void	checker_sort(t_data *data)
 {
-	if (check_sort(&all->a, all->len) == 1)
+	if (check_sort(&data->a, data->len) == 1)
 	{
-		free_stack(&all->a);
-		free_stack(&all->b);
+		free_stack(&data->a);
+		free_stack(&data->b);
 		ft_putstr_fd("OK\n", 1);
 		exit(1);
 	}
 	else
 	{
-		free_stack(&all->a);
-		free_stack(&all->b);
+		free_stack(&data->a);
+		free_stack(&data->b);
 		ft_putstr_fd("KO\n", 1);
 		exit(1);
 	}
 }
 
-int	check_sort(t_stack **a, int len)
+int		check_sort(t_stack **a, int len)
 {
 	t_stack	*tmp;
 

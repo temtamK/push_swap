@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   use_libft.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 00:13:19 by zainabdnaya       #+#    #+#             */
-/*   Updated: 2021/04/20 12:17:54 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/06/01 00:06:40 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:06:53 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isalpha(int c)
+int		ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);

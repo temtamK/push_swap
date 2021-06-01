@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 17:07:59 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/20 16:08:11 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/05/31 18:11:55 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:03:18 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	add_front(t_stack **head, t_stack *new_node)
 	(*head) = new_node;
 }
 
-int	node_nbr(t_stack **head, int index)
+int		node_nbr(t_stack **head, int index)
 {
 	t_stack	*tmp;
-	    int	count;
+	int		count;
 
 	count = 0;
 	tmp = *head;

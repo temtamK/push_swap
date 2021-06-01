@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 14:59:35 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/22 03:17:12 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/06/01 00:02:17 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:13:47 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	check_replicat(char **av)
 {
-	 int	i;
-	 int	j;
+	int		i;
+	int		j;
 	char	*replica;
 
 	i = 0;
@@ -53,7 +53,7 @@ void	check_exist(char **av)
 	}
 }
 
-int	check_ascii(char **av)
+int		check_ascii(char **av)
 {
 	int	i;
 	int	j;

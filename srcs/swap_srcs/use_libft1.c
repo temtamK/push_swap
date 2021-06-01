@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   use_libft1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 00:16:00 by zainabdnaya       #+#    #+#             */
-/*   Updated: 2021/04/16 00:16:32 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/06/01 00:07:19 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:07:28 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ static void	*fill(const char *str, char **tab, int len_y, int c)
 	return ((void *)1);
 }
 
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
-	 int	len_y;
+	int		len_y;
 	char	**tab;
 	void	*check;
 

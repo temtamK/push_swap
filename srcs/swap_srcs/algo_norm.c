@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   algo_norm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 13:41:24 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/20 16:07:47 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/05/31 19:27:48 by taemkim           #+#    #+#             */
+/*   Updated: 2021/05/31 19:27:49 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	norm_part1(t_stack **a, t_stack **b, t_all *all, int m)
+void	norm_part1(t_stack **a, t_stack **b, t_data *data, int m)
 {
 	int	index;
 	int	proximity;
@@ -20,12 +20,12 @@ void	norm_part1(t_stack **a, t_stack **b, t_all *all, int m)
 	index = get_index((*a), m);
 	proximity = (size_list((*a)) / 2);
 	if (proximity > index)
-		switch_case(a, b, 2, all);
+		switch_case(a, b, 2, data);
 	else
-		switch_case(a, b, 3, all);
+		switch_case(a, b, 3, data);
 }
 
-void	norm_part3(t_stack **a, t_stack **b, t_all *all, int max)
+void	norm_part3(t_stack **a, t_stack **b, t_data *data, int max)
 {
 	int	index;
 	int	proximity;
@@ -33,9 +33,9 @@ void	norm_part3(t_stack **a, t_stack **b, t_all *all, int max)
 	index = get_index_max((*b), max);
 	proximity = val_aprox((size_list((*b)) / 2));
 	if (proximity > index && *b)
-		switch_case(a, b, 5, all);
+		switch_case(a, b, 5, data);
 	else if (*b)
-		switch_case(a, b, 6, all);
+		switch_case(a, b, 6, data);
 }
 
 t_stack	*bottom(t_stack *a)

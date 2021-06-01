@@ -3,102 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 14:37:50 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/22 02:44:16 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/05/31 16:09:19 by taemkim           #+#    #+#             */
+/*   Updated: 2021/05/31 19:30:02 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**fill_ps(t_all *all, int ac, char **av)
+char	**fill_ps(t_data *data, int ac, char **av)
 {
 	if (!ft_strcmp(av[1], "-s"))
 	{
-		all->fd = open("swap.log", O_CREAT | O_RDWR | O_TRUNC, 0666);
-		if (all->fd == -1)
+		data->fd = open("swap.log", O_CREAT | O_RDWR | O_TRUNC, 0666);
+		if (data->fd == -1)
 			ft_putstr_fd("Error! opening file", 1);
 		if (ac == 3)
-			all->split = ft_split(av[2], ' ');
+			data->split = ft_split(av[2], ' ');
 		else
-			all->split = &av[2];
+			data->split = &av[2];
 	}
 	else
 	{
-		all->fd = 1;
+		data->fd = 1;
 		if (ac == 2)
-			all->split = ft_split(av[1], ' ');
+			data->split = ft_split(av[1], ' ');
 		else
-			all->split = &av[1];
+			data->split = &av[1];
 	}
-	return (all->split);
+	return (data->split);
 }
 
-void	swap_(t_all *all, int ac, char **av)
+void	ft_swap(t_data *data, int ac, char **av)
 {
 	t_stack	*new;
 
 	new = NULL;
-	all->split = fill_ps(all, ac, av);
-	check_replicat(all->split);
-	check_ascii(all->split);
-	all->a = put_in_list(all, all->split, new);
-	if (check_sort(&all->a, size_list(all->a)) == 1)
+	data->split = fill_ps(data, ac, av);
+	check_replicat(data->split);
+	check_ascii(data->split);
+	data->a = put_in_list(data, data->split, new);
+	if (check_sort(&data->a, size_list(data->a)) == 1)
 		exit(0);
-	all->len = size_list(all->a);
+	data->len = size_list(data->a);
 	free_stack(&new);
-	if (all->len <= 10)
-		sort_min(&(all->a), &(all->b), all->len, all);
-	else if (all->len > 10 && all->len < 200)
-		algo_1(&(all->a), &(all->b), all->len, all);
+	if (data->len <= 10)
+		sort_min(&(data->a), &(data->b), data->len, data);
+	else if (data->len > 10 && data->len < 200)
+		algo_1(&(data->a), &(data->b), data->len, data);
 	else
-		algo(&(all->a), &(all->b), all->len, all);
-	if (ac == 2 || (ac == 3 && all->fd != 1))
-		ft_free_split(all->split);
-	close(all->fd);
+		algo(&(data->a), &(data->b), data->len, data);
+	if (ac == 2 || (ac == 3 && data->fd != 1))
+		ft_free_split(data->split);
+	close(data->fd);
 }
 
-void	text(void)
+int		main(int ac, char **av)
 {
-	char	*str;
+	t_data	*data;
 
-	str = "Run this command it should give OK \xE2\x9C\x85 if no Errors exist\n";
-	ft_putstr_fd("\t\033[94m\xE2\x9C\xA8Welcome to PUSH_SWAP\xE2\x9C\xA8 \033[94m\t\n", 1);
-	ft_putstr_fd("\033[36mTo run Push_swap\xE2\x9D\x97:\n", 1);
-	ft_putstr_fd("\033[35m ./push_swap list_of_numbers_given_as_parameters\n", 1);
-	ft_putstr_fd("\033[92m exemple (./push_swap 4 3 7)\n", 1);
-	ft_putstr_fd("\033[36mTo run Checker\xE2\x9D\x97:\n", 1);
-	ft_putstr_fd("\033[35m ./checker number_list\n", 1);
-	ft_putstr_fd("\033[92m exemple (./checker 4 3 7)\n", 1);
-	ft_putstr_fd("\033[94mTo Check if push_swap work well\xF0\x9F\x91\x8C:\n", 1);
-	ft_putstr_fd("\033[94m\xF0\x9F\x8F\x83", 1);
-	ft_putstr_fd(str, 1);
-	ft_putstr_fd("\033[35m ./push_swap number_list | ./checker number_list\n", 1);
-	ft_putstr_fd("\033[92m exemple (./push_swap 4 3 7 | ./checker 4 3 7 )\n", 1);
-	ft_putstr_fd("\t\t\033[30m\033[41m Output: OK!\n", 1);
-	exit(0);
-}
-
-int	main(int ac, char **av)
-{
-	t_all	*all;
-
-	all = NULL;
+	data = NULL;
 	if (ac < 2)
 		exit(1);
 	else
 	{
-		all = initial(all);
-		if (!ft_strcmp(av[1], "-h"))
-			text();
+		data = initial(data);
 		if (!ft_strcmp(av[1], "-c"))
-			swap_c(all, ac, av);
+			swap_c(data, ac, av);
 		else if (!ft_strcmp(av[1], "-sh"))
-			swap_sh(all, ac, av);
+			swap_sh(data, ac, av);
 		else
-			swap_(all, ac, av);
-		free(all);
-		all = NULL;
+			ft_swap(data, ac, av);
+		free(data);
+		data = NULL;
 	}
 }

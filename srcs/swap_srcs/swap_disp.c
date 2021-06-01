@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_disp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 16:27:40 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/21 04:41:57 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/06/01 00:05:06 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:05:07 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

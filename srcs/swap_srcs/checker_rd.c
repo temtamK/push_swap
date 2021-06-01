@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_rd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 10:15:44 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/21 15:51:07 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/05/31 23:56:01 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:02:13 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	free_condition_(char **str)
 	exit(1);
 }
 
-int	condition_(char *line)
+int		condition_(char *line)
 {
 	char	**str;
-	 int	i;
+	int		i;
 
 	str = ft_split(line, '\n');
 	i = 0;
@@ -44,7 +44,6 @@ void	checker_pars_v(t_stack **a, t_stack **b, char *line)
 {
 	t_stack	*tmp;
 
-	tmp = NULL;
 	if (!ft_strcmp(line, "sa\n") && size_list(*a) > 1)
 		swap_stack(a);
 	else if (!ft_strcmp(line, "ra\n") && size_list(*a) > 1)
@@ -65,6 +64,7 @@ void	checker_pars_v(t_stack **a, t_stack **b, char *line)
 		ss(a, b);
 	else if (!ft_strcmp(line, "rr\n") && size_list(*b) > 1 && size_list(*a) > 1)
 		rr(a, b);
-	else if (!ft_strcmp(line, "rrr\n") && size_list(*b) > 1 && size_list(*a) > 1)
+	else if (!ft_strcmp(line, "rrr\n") &&
+			size_list(*b) > 1 && size_list(*a) > 1)
 		rrr(a, b);
 }

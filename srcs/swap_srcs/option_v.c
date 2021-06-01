@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   option_v.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 06:49:20 by zainabdnaya       #+#    #+#             */
-/*   Updated: 2021/04/20 23:35:03 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/06/01 00:03:50 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:13:31 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	option_v(t_all *all, int ac, char **av)
+void	option_v(t_data *data, int ac, char **av)
 {
 	if (ac == 3)
-		all->split = ft_split(av[2], ' ');
+		data->split = ft_split(av[2], ' ');
 	else
-		all->split = &av[2];
-	all = fill_in(all);
+		data->split = &av[2];
+	data = fill_in(data);
 	while (1)
 	{
-		all->line = ft_calloc(BUFFER_SIZE, sizeof(char));
-		read(0, all->line, BUFFER_SIZE);
-		if (all->line[0] == '\0' || all->line[0] == '\n')
+		data->line = ft_calloc(BUFFER_SIZE, sizeof(char));
+		read(0, data->line, BUFFER_SIZE);
+		if (data->line[0] == '\0' || data->line[0] == '\n')
 		{
-			checker_sort(all);
+			checker_sort(data);
 			exit(1);
 		}
 		else
-			checker_pars_v(&all->a, &all->b, all->line);
+			checker_pars_v(&data->a, &data->b, data->line);
 		system("clear");
-		print_all(all->a, all->b);
-		free_arg(&(all->line));
+		print_data(data->a, data->b);
+		free_arg(&(data->line));
 	}
-	if (all->line[0] == '\0' || all->line[0] == '\n')
+	if (data->line[0] == '\0' || data->line[0] == '\n')
 	{
-		checker_sort(all);
+		checker_sort(data);
 		exit(1);
 	}
 }
@@ -44,7 +44,7 @@ void	option_v(t_all *all, int ac, char **av)
 char	*ft_strdup(const char *src)
 {
 	char	*dup;
-	 int	i;
+	int		i;
 
 	i = 0;
 	while (src[i])
@@ -64,7 +64,7 @@ char	*ft_strdup(const char *src)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	 int	i;
+	int		i;
 	char	*ptr;
 
 	i = 0;
@@ -80,7 +80,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-int	ft_strlen(char *s1)
+int		ft_strlen(char *s1)
 {
 	int	k;
 
@@ -92,9 +92,9 @@ int	ft_strlen(char *s1)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	        char	*s3;
-	        char	*str1;
-	        char	*str2;
+	char			*s3;
+	char			*str1;
+	char			*str2;
 	unsigned int	len;
 
 	if (!s1 || !s2)

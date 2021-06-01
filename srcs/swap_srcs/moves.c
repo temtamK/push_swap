@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 13:59:39 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/20 16:11:18 by zdnaya           ###   ########.fr       */
+/*   Created: 2021/06/01 00:03:33 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:03:39 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	swap_stack(t_stack **head)
 {
-	    int	k;
-	    int	l;
+	int		k;
+	int		l;
 	t_stack	*tmp;
 
 	tmp = NULL;

@@ -1,55 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_min_c.c                                       :+:      :+:    :+:   */
+/*   algo_min_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 00:56:25 by zainabdnaya       #+#    #+#             */
-/*   Updated: 2021/04/21 04:42:12 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/05/31 23:55:12 by taemkim           #+#    #+#             */
+/*   Updated: 2021/05/31 23:55:22 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_norm_c(t_stack **a, t_stack **b)
+void	sort_norm_d(t_stack **a, t_stack **b)
 {
-	switch_case_color(a, b, 8);
-	switch_case_color(a, b, 3);
+	s_c_display(a, b, 8);
+	s_c_display(a, b, 3);
 }
 
-void	sort_c_3(t_stack **a, t_stack **b, int len)
+void	sort_a_3_d(t_stack **a, t_stack **b, int len)
 {
 	t_stack	*bottom1;
-	    int	min;
+	int		min;
 
 	bottom1 = bottom(*a);
 	min = get_min(*a);
 	while (check_sort(a, len) == 0)
 	{
 		if ((*a)->number < (*a)->next->number && bottom1->number == min)
-			switch_case_color(a, b, 3);
+			s_c_display(a, b, 3);
 		else if ((*a)->number > (*a)->next->number && bottom1->number == min)
-			sort_norm_c(a, b);
+			sort_norm_d(a, b);
 		else if ((*a)->next->number == min)
 		{
 			if ((*a)->number < bottom1->number)
-				switch_case_color(a, b, 8);
+				s_c_display(a, b, 8);
 			else if ((*a)->number > bottom1->number)
-				switch_case_color(a, b, 2);
+				s_c_display(a, b, 2);
 		}
 		else if ((*a)->number == min && (*a)->next->number > bottom1->number)
 		{
-			switch_case_color(a, b, 8);
-			switch_case_color(a, b, 2);
+			s_c_display(a, b, 8);
+			s_c_display(a, b, 2);
 		}
 	}
 }
 
-void	sort_min1_c(t_stack **a, t_stack **b, int len)
+void	sort_min1_d(t_stack **a, t_stack **b, int len)
 {
-	    int	size;
-	    int	m;
+	int		size;
+	int		m;
 	t_stack	*ss;
 	t_stack	*tmp;
 
@@ -59,34 +59,34 @@ void	sort_min1_c(t_stack **a, t_stack **b, int len)
 		m = get_min(*a);
 		tmp = (*a)->next;
 		if ((*a)->number != m && tmp && tmp->number == m)
-			switch_case_color(a, b, 8);
+			s_c_display(a, b, 8);
 		while (m != (*a)->number)
-			norm_part1_c(a, b, m, 1);
+			norm_part1_c(a, b, m, 0);
 		if (m == (*a)->number)
 		{
 			ss = *a;
-			switch_case_color(a, b, 1);
+			s_c_display(a, b, 1);
 			free(ss);
 			size--;
 		}
 	}
 }
 
-void	sort_min_c(t_stack **a, t_stack **b, int len)
+void	sort_min_d(t_stack **a, t_stack **b, int len)
 {
 	t_stack	*ss;
 
 	ss = NULL;
 	if (len == 3)
-		sort_c_3(a, b, len);
+		sort_a_3_d(a, b, len);
 	else if (len > 3)
 	{
-		sort_min1_c(a, b, len);
-		sort_c_3(a, b, 3);
+		sort_min1_d(a, b, len);
+		sort_a_3_d(a, b, 3);
 		while ((*b))
 		{
 			ss = *b;
-			switch_case_color(a, b, 4);
+			s_c_display(a, b, 4);
 			free(ss);
 		}
 		free_stack(b);

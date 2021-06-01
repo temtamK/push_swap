@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   orderby.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 15:47:46 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/21 01:17:57 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/06/01 00:04:19 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:14:10 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	rrr(t_stack **a, t_stack **b)
 	rr_stack(b, tmp);
 }
 
-int	avreage(t_stack *a)
+int		avreage(t_stack *a)
 {
-	    int	k;
-	    int	i;
-	    int	avg;
+	int		k;
+	int		i;
+	int		avg;
 	t_stack	*tmp;
 
 	i = 0;
@@ -55,11 +55,11 @@ int	avreage(t_stack *a)
 	return (avg);
 }
 
-char	**normal(t_all *all, int ac, char **av)
+char	**normal(t_data *data, int ac, char **av)
 {
 	if (ac == 2)
-		all->split = ft_split(av[1], ' ');
+		data->split = ft_split(av[1], ' ');
 	else
-		all->split = &av[1];
-	return (all->split);
+		data->split = &av[1];
+	return (data->split);
 }

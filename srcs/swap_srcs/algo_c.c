@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_500.c                                         :+:      :+:    :+:   */
+/*   algo_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/11 12:38:17 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/18 23:47:41 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/05/31 23:54:07 by taemkim           #+#    #+#             */
+/*   Updated: 2021/05/31 23:54:20 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	part_1(t_stack **a, t_stack **b, int len, t_all *all)
+void	part1_1_c(t_stack **a, t_stack **b, int len)
 {
-	    int	size;
-	    int	m;
+	int		size;
+	int		m;
 	t_stack	*tmp;
 	t_stack	*tmps;
 
 	size = len;
-	while (size >= val_aprox(len / 8))
+	while (size >= val_aprox(len / 4))
 	{
 		tmps = dup_list(*a);
 		m = get_pivot(tmps);
@@ -29,49 +29,49 @@ void	part_1(t_stack **a, t_stack **b, int len, t_all *all)
 			if ((*a)->number <= m)
 			{
 				tmp = *a;
-				switch_case(a, b, 1, all);
+				switch_case_color(a, b, 1);
 				size--;
 				free(tmp);
 			}
 			else
-				norm_part1(a, b, all, m);
+				norm_part1_c(a, b, m, 1);
 		}
 		free_stack(&tmps);
 	}
 }
 
-void	part_2(t_stack **a, t_stack **b, t_all *all, int size)
+void	part1_2_c(t_stack **a, t_stack **b, int size)
 {
+	int		min;
 	t_stack	*tmp;
-	t_stack	*tmps;
-	    int	min;
 
+	tmp = NULL;
 	while (*a && !check_sort(a, size))
 	{
 		min = get_min(*a);
 		tmp = (*a)->next;
 		while ((*a)->number != min && tmp && tmp->number == min)
-			switch_case(a, b, 8, all);
+			switch_case_color(a, b, 8);
 		while (size_list(*a) && check_under_pivot((*a), min))
 		{
 			if ((*a)->number == min)
 			{
-				tmps = *a;
-				switch_case(a, b, 1, all);
-				free(tmps);
+				tmp = *a;
+				switch_case_color(a, b, 1);
+				free(tmp);
 				size--;
 			}
 			else
-				norm_part1(a, b, all, min);
+				norm_part1_c(a, b, min, 1);
 		}
 	}
 }
 
-void	part_3(t_stack **a, t_stack **b, t_all *all, int max)
+void	part1_3_c(t_stack **a, t_stack **b, int max)
 {
 	t_stack	*tmp;
-	t_stack	*tmps;
 
+	tmp = NULL;
 	while (*b)
 	{
 		max = get_max(*b);
@@ -80,28 +80,28 @@ void	part_3(t_stack **a, t_stack **b, t_all *all, int max)
 			max = get_max(*b);
 			tmp = (*b)->next;
 			while ((*b)->number != max && tmp && tmp->number == max)
-				switch_case(a, b, 7, all);
+				switch_case_color(a, b, 7);
 			while (((*b)->number != max) && *b)
-				norm_part3(a, b, all, max);
+				norm_part3_c(a, b, max, 1);
 			while (*b && (*b)->number == max)
 			{
-				tmps = *b;
-				switch_case(a, b, 4, all);
+				tmp = *b;
+				switch_case_color(a, b, 4);
 				max = get_max(*b);
-				free(tmps);
+				free(tmp);
 			}
 		}
 	}
 }
 
-void	algo(t_stack **a, t_stack **b, int len, t_all *all)
+void	algo_1_c(t_stack **a, t_stack **b, int len)
 {
 	int	m;
 
 	m = 0;
-	part_1(a, b, len, all);
-	part_2(a, b, all, len);
-	part_3(a, b, all, m);
+	part1_3_c(a, b, len);
+	part1_2_c(a, b, len);
+	part1_3_c(a, b, m);
 	free_stack(a);
 	free_stack(b);
 }

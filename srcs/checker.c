@@ -3,80 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zainabdnayagmail.com <zainabdnayagmail.    +#+  +:+       +#+        */
+/*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/02 14:38:54 by zdnaya            #+#    #+#             */
-/*   Updated: 2021/04/22 03:16:12 by zainabdnaya      ###   ########.fr       */
+/*   Created: 2021/05/31 16:04:35 by taemkim           #+#    #+#             */
+/*   Updated: 2021/06/01 00:14:33 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*string(t_all *all, char *tmp)
+char	*string(t_data *data, char *tmp)
 {
 	char	*str;
 
 	str = NULL;
-	all->line = malloc(sizeof(char) * BUFFER_SIZE);
-	ft_bzero(all->line, BUFFER_SIZE);
-	while (read(0, all->line, BUFFER_SIZE))
+	data->line = malloc(sizeof(char) * BUFFER_SIZE);
+	ft_bzero(data->line, BUFFER_SIZE);
+	while (read(0, data->line, BUFFER_SIZE))
 	{
 		tmp = str;
 		if (str == NULL)
-			str = ft_strdup(all->line);
+			str = ft_strdup(data->line);
 		else
-			str = ft_strjoin(str, all->line);
-		if (all->ac >= 2 && !ft_strchr(all->av[1], ' '))
-			condition_(all->line);
+			str = ft_strjoin(str, data->line);
+		if (data->ac >= 2 && !ft_strchr(data->av[1], ' '))
+			condition_(data->line);
 		if (tmp)
 		{
 			free(tmp);
 			tmp = NULL;
 		}
-		free_arg(&all->line);
-		all->line = malloc(sizeof(char) * BUFFER_SIZE);
-		ft_bzero(all->line, BUFFER_SIZE);
+		free_arg(&data->line);
+		data->line = malloc(sizeof(char) * BUFFER_SIZE);
+		ft_bzero(data->line, BUFFER_SIZE);
 	}
 	return (str);
 }
 
-char	**checker_norm(t_all *all, char **line, char *tmp)
+char	**checker_norm(t_data *data, char **line, char *tmp)
 {
 	char	*l;
 
-	l = string(all, tmp);
+	l = string(data, tmp);
 	if (l)
 	{
 		line = ft_split(l, '\n');
 		free_arg(&l);
 	}
 	else
-		checker_sort(all);
+		checker_sort(data);
 	return (line);
 }
 
-void	the_end(t_all *all, char **line, int i)
+void	the_end(t_data *data, char **line, int i)
 {
 	while (line[i])
 	{
-		if (all->ac <= 2)
+		if (data->ac <= 2)
 		{
-			checker_pars(&all->a, &all->b, line[i]);
+			checker_pars(&data->a, &data->b, line[i]);
 			i++;
 		}
 		else
 		{
 			if (condition(line[i]) == 1)
 			{
-				checker_pars(&all->a, &all->b, line[i]);
+				checker_pars(&data->a, &data->b, line[i]);
 				i++;
 			}
 			else
 			{
 				ft_free_split(line);
-				free_stack(&all->a);
-				free_stack(&all->b);
-				free(all);
+				free_stack(&data->a);
+				free_stack(&data->b);
+				free(data);
 				ft_putstr_fd("Error\n", 2);
 				exit(1);
 			}
@@ -84,40 +84,40 @@ void	the_end(t_all *all, char **line, int i)
 	}
 }
 
-void	checker(t_all *all, char **line)
+void	checker(t_data *data, char **line)
 {
 	char	*tmp;
-	 int	i;
+	int		i;
 
 	i = 0;
 	tmp = NULL;
-	line = checker_norm(all, line, tmp);
-	the_end(all, line, i);
+	line = checker_norm(data, line, tmp);
+	the_end(data, line, i);
 	ft_free_split(line);
-	checker_sort(all);
+	checker_sort(data);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	t_all	*all;
-	 char	**line;
+	t_data	*data;
+	char	**line;
 
 	line = NULL;
-	all = NULL;
+	data = NULL;
 	if (ac < 2)
 		exit(1);
 	else
 	{
-		all = initial(all);
-		all->ac = ac;
-		all->av = av;
+		data = initial(data);
+		data->ac = ac;
+		data->av = av;
 		if (!ft_strcmp(av[1], "-v"))
-			option_v(all, ac, av);
+			option_v(data, ac, av);
 		else
 		{
-			all->split = normal(all, ac, av);
-			all = fill_in(all);
-			checker(all, line);
+			data->split = normal(data, ac, av);
+			data = fill_in(data);
+			checker(data, line);
 		}
 	}
 }
