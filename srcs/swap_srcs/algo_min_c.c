@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 19:06:31 by taemkim           #+#    #+#             */
-/*   Updated: 2021/06/01 00:24:58 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/06/01 12:00:02 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sort_norm_c(t_stack **a, t_stack **b)
 
 void	sort_c_3(t_stack **a, t_stack **b, int len)
 {
-	t_stack	*bottom_stack;
+	t_stack	*bt_stack;
 	int		min;
 
 	bt_stack = bottom(*a);

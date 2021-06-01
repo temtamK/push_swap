@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 23:56:01 by taemkim           #+#    #+#             */
-/*   Updated: 2021/06/01 00:02:13 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/06/01 12:07:19 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,22 @@ int		condition_(char *line)
 	return (1);
 }
 
+void	checker_pars_v2(t_stack **a, t_stack **b, char *line)
+{
+	if (!ft_strcmp(line, "ss\n") && size_list(*b) > 1 && size_list(*a) > 1)
+		ss(a, b);
+	else if (!ft_strcmp(line, "rr\n") && size_list(*b) > 1 && size_list(*a) > 1)
+		rr(a, b);
+	else if (!ft_strcmp(line, "rrr\n") &&
+			size_list(*b) > 1 && size_list(*a) > 1)
+		rrr(a, b);
+}
+
 void	checker_pars_v(t_stack **a, t_stack **b, char *line)
 {
 	t_stack	*tmp;
 
+	tmp = NULL;
 	if (!ft_strcmp(line, "sa\n") && size_list(*a) > 1)
 		swap_stack(a);
 	else if (!ft_strcmp(line, "ra\n") && size_list(*a) > 1)
@@ -60,11 +72,6 @@ void	checker_pars_v(t_stack **a, t_stack **b, char *line)
 		push_stack(a, b, tmp);
 	else if (!ft_strcmp(line, "pa\n"))
 		push_stack(b, a, tmp);
-	else if (!ft_strcmp(line, "ss\n") && size_list(*b) > 1 && size_list(*a) > 1)
-		ss(a, b);
-	else if (!ft_strcmp(line, "rr\n") && size_list(*b) > 1 && size_list(*a) > 1)
-		rr(a, b);
-	else if (!ft_strcmp(line, "rrr\n") &&
-			size_list(*b) > 1 && size_list(*a) > 1)
-		rrr(a, b);
+	else
+		checker_pars_v2(a, b, line);
 }

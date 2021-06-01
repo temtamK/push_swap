@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:04:35 by taemkim           #+#    #+#             */
-/*   Updated: 2021/06/01 00:14:33 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/06/01 14:39:45 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ char	*string(t_data *data, char *tmp)
 	char	*str;
 
 	str = NULL;
-	data->line = malloc(sizeof(char) * BUFFER_SIZE);
-	ft_bzero(data->line, BUFFER_SIZE);
+	data->line = ft_calloc(BUFFER_SIZE, sizeof(char));
 	while (read(0, data->line, BUFFER_SIZE))
 	{
 		tmp = str;
@@ -33,6 +32,8 @@ char	*string(t_data *data, char *tmp)
 			free(tmp);
 			tmp = NULL;
 		}
+		if (data->line[0] == '\0' || data->line[0] == '\n')
+			break ;
 		free_arg(&data->line);
 		data->line = malloc(sizeof(char) * BUFFER_SIZE);
 		ft_bzero(data->line, BUFFER_SIZE);
